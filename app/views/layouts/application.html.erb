@@ -15,18 +15,15 @@
 
   <body>
     <div class="float-right">
-    
-    <%- if(current_contact) %>
-      <%= current_contact.id %>
-      <%= current_contact.name %>
-      <%= link_to('Dashboard', '/') %>
-      <%= link_to('Pets', pets_path) %>
-      <%= link_to('Inbox', conversations_path) %>
-      <%= link_to('Contacts', contacts_path) %>
-      <%= link_to('Logout', destroy_contact_session_path, method: :delete) %>
-    <%- end %>
-
-    
+      <%- if(current_contact) %>
+        <%= current_contact.id %>
+        <%= current_contact.name %>
+        <%= link_to('Dashboard', '/') %>
+        <%= link_to('Pets', pets_path) %>
+        <%= link_to('Inbox', conversations_path) %>
+        <%= link_to('Contacts', contacts_path) %>
+        <%= link_to('Logout', destroy_contact_session_path, method: :delete) %>
+      <%- end %>
     </div>
     <%= yield %>
   </body>
