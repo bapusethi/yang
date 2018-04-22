@@ -6,5 +6,7 @@
 			= contact.latitude
 			= contact.longitude
 			= link_to 'view', contact_path(contact)
+			= link_to 'new pet', new_pet_path
+			= link_to 'chat', new_conversation_path({contact_id: contact.id})
 		
 

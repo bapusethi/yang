@@ -16,3 +16,20 @@
 //= require turbolinks
 //= require_tree .
 //= require gmaps/google
+
+window.onload = function() {
+    if($('#map-list').length > 0){
+		handler = Gmaps.build('Google');
+		
+		handler.buildMap({ provider: {}, internal: {id: 'map-list'}}, function(){
+      const contacts = $('#contacts').data('contacts');
+      arrays = []
+      for(var key in contacts) {
+       arrays.push(contacts[key]);
+      }
+		  markers = handler.addMarkers(arrays);
+		  handler.bounds.extendWith(markers);
+		  handler.fitMapToBounds();
+		});
+	}
+}

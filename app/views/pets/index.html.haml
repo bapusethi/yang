@@ -1,0 +1,7 @@
+.container
+	- @pets.each do |pet|
+		%div
+			= pet.name
+			= pet.gender
+			= "#{pet.years} years #{pet.months} months"
+			

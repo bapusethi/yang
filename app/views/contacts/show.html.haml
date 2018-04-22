@@ -1,2 +1,10 @@
-#contact{'style'=>'width: 800px;', 'data' => {'lat' => @contact.latitude, 'long' => @contact.longitude }}
-  #map{'style'=>'width: 800px; height: 400px;'}
+.container
+	#contact{'style'=>'width: 800px;', 'data' => {'lat' => @contact.latitude, 'long' => @contact.longitude }}
+	#pets
+		- @contact.pets.each do |pet|
+			%div
+				= pet.name
+				= pet.gender
+				= "#{pet.years} years #{pet.months} months"
+	#map{'style'=>'width: 800px; height: 400px;'}
+

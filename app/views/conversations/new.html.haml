@@ -1,0 +1,9 @@
+.container
+	= simple_form_for(:conversation, url: '/conversations', html: { class: 'form' }) do |f|
+		.form-group
+			= hidden_field_tag 'contact_id', @contact_id
+		.form-group
+			= f.input :subject, input_html: { name: 'subject' ,class: 'form-control' }
+		.form-group
+			= f.input :body, input_html: { name: 'body',class: 'form-control' }
+		= f.button :submit

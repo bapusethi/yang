@@ -40,6 +40,8 @@ gem 'bootstrap', '~> 4.1.0'
 gem 'gmaps4rails'
 gem 'jquery-rails'
 gem 'underscore-rails'
+gem 'devise'
+gem 'mailboxer'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
