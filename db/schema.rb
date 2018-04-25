@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180422041447) do
+ActiveRecord::Schema.define(version: 20180425002215) do
 
   create_table "contacts", force: :cascade do |t|
     t.string "first_name"
@@ -36,6 +36,10 @@ ActiveRecord::Schema.define(version: 20180422041447) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.string "profile_image_file_name"
+    t.string "profile_image_content_type"
+    t.integer "profile_image_file_size"
+    t.datetime "profile_image_updated_at"
     t.index ["email"], name: "index_contacts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_contacts_on_reset_password_token", unique: true
   end
@@ -105,6 +109,17 @@ ActiveRecord::Schema.define(version: 20180422041447) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["contact_id"], name: "index_pets_on_contact_id"
+  end
+
+  create_table "pictures", force: :cascade do |t|
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer "pet_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["pet_id"], name: "index_pictures_on_pet_id"
   end
 
 end

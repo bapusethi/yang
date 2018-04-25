@@ -19,6 +19,7 @@
         <%= current_contact.id %>
         <%= current_contact.name %>
         <%= link_to('Dashboard', '/') %>
+        <%= link_to('Edit', edit_contact_path(current_contact)) %>
         <%= link_to('Pets', pets_path) %>
         <%= link_to('Inbox', conversations_path) %>
         <%= link_to('Contacts', contacts_path) %>

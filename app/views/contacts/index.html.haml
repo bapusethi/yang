@@ -2,6 +2,7 @@
   - @contacts.each do |contact|
     %div
       = contact.first_name
+      = image_tag contact.profile_image(:thumb)
       = "#{contact.unit} #{contact.street_number} #{contact.street_name} #{contact.suburb} #{contact.post_code}"
       = contact.latitude
       = contact.longitude

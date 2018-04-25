@@ -2,6 +2,7 @@
   - @pets.each do |pet|
     %div
       = pet.name
+      = image_tag pet.pictures.first.image(:thumb) if pet.pictures.first
       = pet.gender
       = "#{pet.years} years #{pet.months} months"
       

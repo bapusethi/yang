@@ -2,6 +2,9 @@
   = simple_form_for(@pet, html: { class: 'form' }) do |f|
     .form-group
       = f.input :name, input_html: { class: 'form-control' }
+      = f.association :pictures do |pf|
+        .form-group
+          = pf.file_field :image, input_html: { class: 'form-control' }
     .form-group
       = f.input :gender, input_html: { class: 'form-control' }
     .form-group
