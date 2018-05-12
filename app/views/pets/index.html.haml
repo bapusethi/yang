@@ -1,8 +1,15 @@
 .container
-  - @pets.each do |pet|
-    %div
-      = pet.name
-      = image_tag pet.pictures.first.image(:thumb) if pet.pictures.first
-      = pet.gender
-      = "#{pet.years} years #{pet.months} months"
-      
+  .row
+    - @pets.each do |pet|
+      .col-4.mb-3
+        %div.card{'style'=>"max-width: 18rem;"}
+          .card-header
+            = pet.name
+          = image_tag pet.pictures.first.image(:thumb) if pet.pictures.first
+          .card-body
+            = pet.gender
+            %br
+            = pet.age
+
+  - if params[:contact_id].nil?
+    = link_to 'add', new_pet_path

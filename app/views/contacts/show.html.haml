@@ -1,10 +1,22 @@
 .container
   #contact{'style'=>'width: 800px;', 'data' => {'lat' => @contact.latitude, 'long' => @contact.longitude }}
+  .col-4.mb-3
+    %div.card{'style'=>"max-width: 18rem;"}
+      .card-header
+        = @contact.first_name
+      = image_tag @contact.profile_image(:thumb), {class: "card-img-top"}
+      .card-body
+        = mail_to @contact.email
+        %br
+        = "#{@contact.unit} #{@contact.street_number} #{@contact.street_name} #{@contact.suburb} #{@contact.post_code}"
+        %br
+        - if(@contact == current_contact)
+          = link_to 'new pet', new_pet_path
+        - else
+          = link_to 'chat', new_conversation_path({contact_id: @contact.id})
   #pets
     - @contact.pets.each do |pet|
       %div
         = pet.name
         = pet.gender
         = "#{pet.years} years #{pet.months} months"
-  #map{'style'=>'width: 800px; height: 400px;'}
-

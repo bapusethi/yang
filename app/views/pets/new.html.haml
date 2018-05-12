@@ -6,7 +6,7 @@
         .form-group
           = pf.file_field :image, input_html: { class: 'form-control' }
     .form-group
-      = f.input :gender, input_html: { class: 'form-control' }
+      = f.input :gender, :as => :select, :collection => [:male,:female], input_html: { class: 'form-control' }
     .form-group
       = f.input :years, input_html: { class: 'form-control' }
     .form-group

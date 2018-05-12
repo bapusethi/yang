@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   def dashboard
     @nearby_contacts = Contact.near([current_contact.latitude, current_contact.longitude], 10)
                               .limit(100)
-                              .map{ |contact| {lat: contact.latitude, lng: contact.longitude, infowindow: contact.first_name } }.to_json
+                              .map{ |contact| 
+                                { lat: contact.latitude, lng: contact.longitude, infowindow: view_context.link_to(contact.first_name, contact_path(contact)) } 
+                              }.to_json
   end
 end

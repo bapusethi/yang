@@ -1,5 +1,13 @@
 .container
-  %ul
-    - @conversations.each do |conversation|
-      %li
-        = link_to conversation.subject, conversation_path(conversation)
+  %h4 Inbox
+  - @conversations.each do |conversation|
+    .mb-5.row
+      - message = conversation.receipts_for(current_contact).last.message
+      %div.col-6.highlight
+        = link_to message.sender.name, contact_path(message.sender)
+        %div
+          = link_to conversation.subject, conversation_path(conversation)
+        %div
+          = message.body
+          %br
+          = message.created_at.strftime('%Y-%m-%d %H:%M')

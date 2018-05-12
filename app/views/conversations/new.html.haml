@@ -5,5 +5,5 @@
     .form-group
       = f.input :subject, input_html: { name: 'subject' ,class: 'form-control' }
     .form-group
-      = f.input :body, input_html: { name: 'body',class: 'form-control' }
-    = f.button :submit
+      = f.input :reply, input_html: { name: 'body',class: 'form-control' }
+    = f.button :submit, input_html: { class: 'btn btn-primary' }

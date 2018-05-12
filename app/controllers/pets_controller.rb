@@ -13,18 +13,23 @@ class PetsController < ApplicationController
   end
 
   def create
-    pet = Pet.create pet_params
-    pet.pictures.create pet_image_params 
+    pet = current_contact.pets.create pet_params
+    pet.pictures.create pet_image_params
+    redirect_to pets_path
   end
 
   def index
-    @pets = current_contact.pets
+    if params[:contact_id]
+      @pets = Contact.find(params[:contact_id]).pets
+    else
+      @pets = current_contact.pets
+    end
   end
 
   private
 
   def pet_params
-    params.required(:pet).permit(%[name gender years months description]).merge(contact: current_contact)
+    params.required(:pet).permit(%i[name gender years months description])
   end
 
   def pet_image_params

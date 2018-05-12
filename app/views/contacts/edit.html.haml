@@ -1,21 +1,22 @@
 .container
   = simple_form_for(@contact, html: { class: 'form' }) do |f|
-    .form-group
-      = f.input :first_name, input_html: { class: 'form-control' }
-    .form-group
-      = f.input :last_name, input_html: { class: 'form-control' }
-    .form-group
-      = f.file_field :profile_image, input_html: { class: 'form-control' }
-    .form-group
-      = f.input :unit, input_html: { class: 'form-control' }
-    .form-group
-      = f.input :street_number, input_html: { class: 'form-control' }
-    .form-group
-      = f.input :street_name, input_html: { class: 'form-control' }
-    .form-group
-      = f.input :suburb, input_html: { class: 'form-control' }
-    .form-group
-      = f.input :state, input_html: { class: 'form-control' }
-    .form-group
-      = f.input :post_code, input_html: { class: 'form-control' }
+    .row
+      .form-group.col-6
+        = f.input :first_name, input_html: { class: 'form-control' }
+      .form-group.col-6
+        = f.input :last_name, input_html: { class: 'form-control' }
+      .form-group.col-12
+        = f.file_field :profile_image, input_html: { class: 'form-control' }
+      .form-group.col-6
+        = f.input :unit, input_html: { class: 'form-control' }
+      .form-group.col-6
+        = f.input :street_number, input_html: { class: 'form-control' }
+      .form-group.col-6
+        = f.input :street_name, input_html: { class: 'form-control' }
+      .form-group.col-6
+        = f.input :suburb, input_html: { class: 'form-control' }
+      .form-group.col-6
+        = f.input :state, input_html: { class: 'form-control' }
+      .form-group.col-6
+        = f.input :post_code, input_html: { class: 'form-control' }
     = f.button :submit

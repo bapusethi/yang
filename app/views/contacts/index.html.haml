@@ -1,13 +1,20 @@
 .container
-  - @contacts.each do |contact|
-    %div
-      = contact.first_name
-      = image_tag contact.profile_image(:thumb)
-      = "#{contact.unit} #{contact.street_number} #{contact.street_name} #{contact.suburb} #{contact.post_code}"
-      = contact.latitude
-      = contact.longitude
-      = link_to 'view', contact_path(contact)
-      = link_to 'new pet', new_pet_path
-      = link_to 'chat', new_conversation_path({contact_id: contact.id})
-    
+  .row
+    - @contacts.each do |contact|
+      .col-4.mb-3
+        %div.card{'style'=>"max-width: 18rem;"}
+          .card-header
+            = contact.first_name
+          = image_tag contact.profile_image(:thumb), {class: "card-img-top"}
+          .card-body
+            = mail_to contact.email
+            %br
+            = "#{contact.unit} #{contact.street_number} #{contact.street_name} #{contact.suburb} #{contact.post_code}"
+            %br
+            - if(contact == current_contact)
+              = link_to 'new pet', new_pet_path
+            - else
+              = link_to 'view', contact_path(contact)
+              %br
+              = link_to 'chat', new_conversation_path({contact_id: contact.id})
 

@@ -3,11 +3,13 @@
     = @conversation.subject
   - @conversation.receipts_for(current_contact).each do |receipt|
     %p
-      = receipt.message.sender.name
+      = link_to contact_path(current_contact) do
+        = receipt.message.sender.name
     %p
       = receipt.message.body
 
   = simple_form_for(:message, url: conversation_messages_path(@conversation), html: { class: 'form' }) do |f|
     .form-group
-      = f.input :body, input_html: { name: 'body',class: 'form-control' }
+      = f.label :reply
+      = f.text_area :reply, name: 'body',class: 'form-control'
     = f.button :submit
