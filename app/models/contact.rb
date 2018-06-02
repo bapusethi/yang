@@ -8,7 +8,7 @@ class Contact < ApplicationRecord
   has_many :pets
   acts_as_messageable
 
-  has_attached_file :profile_image, styles: { thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :profile_image, styles: { thumb: "100x100>" }
   validates_attachment_content_type :profile_image, content_type: /\Aimage\/.*\z/
 
   def full_street_address

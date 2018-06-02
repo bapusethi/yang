@@ -14,39 +14,5 @@
 //= require underscore
 //= require rails-ujs
 //= require turbolinks
-//= require_tree .
 //= require gmaps/google
-
-var loadMap = function() {
-    if($('#map-list').length > 0){
-		handler = Gmaps.build('Google');
-		
-		handler.buildMap({ provider: {}, internal: {id: 'map-list'}}, function(){
-      const contacts = $('#contacts').data('contacts');
-      arrays = []
-      for(var key in contacts) {
-       arrays.push(contacts[key]);
-      }
-		  markers = handler.addMarkers(arrays);
-		  handler.bounds.extendWith(markers);
-		  handler.fitMapToBounds();
-		});
-	}
-
-  if($('#map').length > 0){
-    handler = Gmaps.build('Google');
-    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-      markers = handler.addMarkers([
-        {
-          "lat": $('#contact').data('lat'),
-          "lng": $('#contact').data('long'),
-          "infowindow": "hello!"
-        }
-      ]);
-      handler.bounds.extendWith(markers);
-      handler.fitMapToBounds();
-    });
-  }
-}
-
-$(document).on('turbolinks:load', loadMap);
+//= require_tree .

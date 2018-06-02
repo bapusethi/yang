@@ -1,13 +1,24 @@
-.container
-  %h4 Inbox
-  - @conversations.each do |conversation|
-    .mb-5.row
-      - message = conversation.receipts_for(current_contact).last.message
-      %div.col-6.highlight
-        = link_to message.sender.name, contact_path(message.sender)
-        %div
-          = link_to conversation.subject, conversation_path(conversation)
-        %div
-          = message.body
-          %br
-          = message.created_at.strftime('%Y-%m-%d %H:%M')
+%h4 Inbox
+.row.highlight
+  %div.col-2
+    Name
+  %div.col-2
+    Subject
+  %div.col-4
+    Message
+  %div.col-3
+    Received at
+  
+- @conversations.each do |conversation|
+  - message = conversation.receipts_for(current_contact).last.message
+  .row.highlight
+    %div.col-2
+      = link_to message.sender.name, contact_path(message.sender)
+    %div.col-2
+      conversation.subject
+    %div.col-4
+      = message.body
+    %div.col-3
+      = message.created_at.strftime('%Y-%m-%d %H:%M')
+    %div.col-1
+      = link_to 'View', conversation_path(conversation)

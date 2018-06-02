@@ -17,6 +17,7 @@
   #pets
     - @contact.pets.each do |pet|
       %div
+        = image_tag pet.pictures.first.image.url, size: "100x100"
         = pet.name
         = pet.gender
         = "#{pet.years} years #{pet.months} months"

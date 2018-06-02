@@ -21,6 +21,6 @@ class ContactsController < ApplicationController
   end
 
   def index
-    @contacts = Contact.all
+    @contacts = Contact.near([current_contact.latitude || SYDNEY_LATITUDE, current_contact.longitude || SYDNEY_LONGITUDE], 50)
   end
 end

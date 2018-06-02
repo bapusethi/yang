@@ -1,15 +1,14 @@
-.container
-  %h3
-    = @conversation.subject
-  - @conversation.receipts_for(current_contact).each do |receipt|
-    %p
-      = link_to contact_path(current_contact) do
-        = receipt.message.sender.name
-    %p
-      = receipt.message.body
+%h3
+  = @conversation.subject
+- @conversation.receipts_for(current_contact).each do |receipt|
+  %p
+    = link_to contact_path(current_contact) do
+      = receipt.message.sender.name
+  %p
+    = receipt.message.body
 
-  = simple_form_for(:message, url: conversation_messages_path(@conversation), html: { class: 'form' }) do |f|
-    .form-group
-      = f.label :reply
-      = f.text_area :reply, name: 'body',class: 'form-control'
-    = f.button :submit
+= simple_form_for(:message, url: conversation_messages_path(@conversation), html: { class: 'form' }) do |f|
+  .form-group
+    = f.label :reply
+    = f.text_area :reply, name: 'body',class: 'form-control'
+  = f.button :submit

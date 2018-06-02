@@ -14,7 +14,5 @@
             - if(contact == current_contact)
               = link_to 'new pet', new_pet_path
             - else
-              = link_to 'view', contact_path(contact)
-              %br
               = link_to 'chat', new_conversation_path({contact_id: contact.id})
 
