@@ -5,7 +5,7 @@
         %div.card{'style'=>"max-width: 18rem;"}
           .card-header
             = contact.first_name
-          = image_tag contact.profile_image(:thumb), {class: "card-img-top"}
+          = image_tag contact.profile_image(:thumb), {class: "card-img-top"} if contact.profile_image.present?
           .card-body
             = mail_to contact.email
             %br
@@ -14,5 +14,5 @@
             - if(contact == current_contact)
               = link_to 'new pet', new_pet_path
             - else
-              = link_to 'chat', new_conversation_path({contact_id: contact.id})
+              = link_to 'message', new_conversation_path({contact_id: contact.id})
 

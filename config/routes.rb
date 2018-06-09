@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   resources :contacts
   resources :pets
 
-  root 'application#dashboard'
-
   resources :conversations do
   	resources :messages
   end
+
+  root 'application#dashboard'
 end

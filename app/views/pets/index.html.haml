@@ -3,7 +3,11 @@
     .col-4.mb-3
       %div.card{'style'=>"max-width: 18rem;"}
         .card-header
-          = pet.name
+          .row
+            .col-10
+              = pet.name
+            .col-2
+              = link_to 'x', pet_path(pet.id), method: 'delete'
         = image_tag pet.pictures.first.image(:thumb) if pet.pictures.first
         .card-body
           = pet.gender
