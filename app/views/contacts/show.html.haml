@@ -4,7 +4,7 @@
     %div.card{'style'=>"max-width: 18rem;"}
       .card-header
         = @contact.first_name
-      = image_tag @contact.profile_image(:thumb), {class: "card-img-top"}
+      = image_tag @contact.profile_image(:thumb), {class: "card-img-top"} if @contact.profile_image.present?
       .card-body
         = mail_to @contact.email
         %br
@@ -17,7 +17,7 @@
   #pets
     - @contact.pets.each do |pet|
       %div
-        = image_tag pet.pictures.first.image.url, size: "100x100"
+        = image_tag pet.pictures.first.image.url, size: "100x100" if pet.pictures.first.image.present?
         = pet.name
         = pet.gender
         = "#{pet.years} years #{pet.months} months"

@@ -26,6 +26,11 @@ class PetsController < ApplicationController
     end
   end
 
+  def destroy
+    Pet.destroy params[:id]
+    redirect_to pets_path
+  end
+
   private
 
   def pet_params
@@ -33,6 +38,6 @@ class PetsController < ApplicationController
   end
 
   def pet_image_params
-    params.required(:pet).required(:pictures).permit(:image)
+    params.required(:pet).permit(:pictures)
   end
 end

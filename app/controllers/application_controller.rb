@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   private
 
   def info(contact)
-    pet = contact.pets.first ? view_context.link_to(view_context.image_tag(contact.pets.first.pictures.first.image(:thumb)), contact_path(contact))
+    pet = contact.pets.first && contact.pets.first.pictures.first ? view_context.link_to(view_context.image_tag(contact.pets.first.pictures.first.image(:thumb)), contact_path(contact))
                              : view_context.link_to(contact.name, contact_path(contact))
 
     view_context.content_tag(:div, pet)

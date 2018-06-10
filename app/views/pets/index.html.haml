@@ -8,7 +8,7 @@
               = pet.name
             .col-2
               = link_to 'x', pet_path(pet.id), method: 'delete'
-        = image_tag pet.pictures.first.image(:thumb) if pet.pictures.first
+        = image_tag pet.pictures.first.image(:thumb) if pet.pictures.first.image.present?
         .card-body
           = pet.gender
           %br
