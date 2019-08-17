@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ContactsController < ApplicationController
   def new
     @contact = Contact.new
@@ -21,6 +23,9 @@ class ContactsController < ApplicationController
   end
 
   def index
-    @contacts = Contact.near([current_contact.latitude || SYDNEY_LATITUDE, current_contact.longitude || SYDNEY_LONGITUDE], 50)
+    @contacts = Contact.near(
+      [current_contact.latitude || SYDNEY_LATITUDE, current_contact.longitude || SYDNEY_LONGITUDE],
+      50
+    )
   end
 end

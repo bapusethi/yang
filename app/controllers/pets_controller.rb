@@ -1,16 +1,15 @@
+# frozen_string_literal: true
+
 class PetsController < ApplicationController
   def new
     @pet = Pet.new
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
-  def update
-  end
+  def update; end
 
   def create
     pet = current_contact.pets.create pet_params
@@ -19,11 +18,11 @@ class PetsController < ApplicationController
   end
 
   def index
-    if params[:contact_id]
-      @pets = Contact.find(params[:contact_id]).pets
-    else
-      @pets = current_contact.pets
-    end
+    @pets = if params[:contact_id]
+              Contact.find(params[:contact_id]).pets
+            else
+              current_contact.pets
+            end
   end
 
   def destroy
