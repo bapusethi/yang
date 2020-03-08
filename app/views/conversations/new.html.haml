@@ -1,6 +1,6 @@
 .row
   .col-12.col-md-6
-    = simple_form_for(:conversation, url: '/conversations', html: { class: 'form' }) do |f|
+    = simple_form_for(:conversation, url: '/api/conversations', html: {'data-type' => 'json', class: 'form', remote: true }) do |f|
       .form-group
         = hidden_field_tag 'contact_id', @contact_id
       .form-group

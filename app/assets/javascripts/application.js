@@ -16,3 +16,10 @@
 //= require turbolinks
 //= require gmaps/google
 //= require_tree .
+
+
+window.onload = function(){
+  $('form[data-remote="true"]').bind('ajax:complete', function() {
+    location.reload(true);
+  });
+}

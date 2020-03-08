@@ -14,7 +14,7 @@ class Contact < ApplicationRecord
   validates_attachment_content_type :profile_image, content_type: %r{\Aimage/.*\z}
 
   def full_street_address
-    "#{unit} #{street_number} #{street_name} #{suburb} #{post_code}"
+    "#{street_number} #{street_name} #{suburb} #{post_code}"
   end
 
   def name

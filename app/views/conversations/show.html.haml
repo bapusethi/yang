@@ -34,7 +34,8 @@
 
   %div{style:"padding:5px;"}
     .msj-rta.macro
-      = simple_form_for(:message, url: conversation_messages_path(@conversation), html: { id: 'conversation-form', class: 'form', style: 'width: 100%;' }) do |f|
+      = simple_form_for(:message, url: '/api/messages', html: { id: 'conversation-form', class: 'form', style: 'width: 100%;', remote: true }) do |f|
+        = f.hidden_field :conversation_id, value: @conversation.id, name: "conversation_id"
         %div{style:"padding:10px;"}
           .text.text-r{style: "background:whitesmoke !important"}
             %input.mytext{placeholder:"Type a message", name: 'body', id: 'conversation-input', type:'text'}

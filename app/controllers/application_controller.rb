@@ -1,14 +1,15 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  #protect_from_forgery with: :exception
   before_action :authenticate_contact!
 
   skip_before_action :authenticate_contact!, only: [:dashboard]
 
   def dashboard
     @nearby_contacts = if current_contact
-                         Contact.near([current_contact.latitude, current_contact.longitude], 10)
+                         Contact.near(
+                          [current_contact.latitude || SYDNEY_LATITUDE, current_contact.longitude || SYDNEY_LONGITUDE], 10)
                        else
                          Contact.near([SYDNEY_LATITUDE, SYDNEY_LONGITUDE], 10)
                        end
